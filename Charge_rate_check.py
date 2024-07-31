@@ -46,9 +46,15 @@ def HIGH_CHARGE_RATE_WARNING_message():
     print ("HIGH CHARGE_RATE WARNING")
 
 
+def low_charge_rate_is_ok(charge_rate):
+    return(LOW_CHARGE_RATE_BREACH(charge_rate) or
+    LOW_CHARGE_RATE_WARNING(charge_rate))
+
+def high_charge_rate_is_ok(charge_rate):
+    return(HIGH_CHARGE_RATE_BREACH(charge_rate) or 
+           HIGH_CHARGE_RATE_WARNING(charge_rate))
+
 def charge_rate_is_ok(charge_rate):
-    return(NORMAL_CHARGE_RATE(charge_rate) or
-    LOW_CHARGE_RATE_WARNING(charge_rate) or
-    HIGH_CHARGE_RATE_WARNING(charge_rate) or
-    LOW_CHARGE_RATE_BREACH(charge_rate) or
-    HIGH_CHARGE_RATE_BREACH(charge_rate))
+    return(NORMAL_CHARGE_RATE(charge_rate) or 
+           high_charge_rate_is_ok(charge_rate) or 
+           low_charge_rate_is_ok(charge_rate) )
