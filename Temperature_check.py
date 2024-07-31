@@ -48,9 +48,17 @@ def HIGH_TEMPERATURE_WARNING_message():
     print ("HIGH TEMPERATURE WARNING")
 
 
+def low_temperature_is_ok(temperature):
+    return(LOW_TEMPERATURE_WARNING(temperature) or
+    LOW_TEMPERATURE_BREACH(temperature))
+
+def high_temperature_is_ok(temperature):
+    return(HIGH_TEMPERATURE_WARNING(temperature) or 
+           HIGH_TEMPERATURE_BREACH(temperature))
+
+
 def temperature_is_ok(temperature):
     
-    return (LOW_TEMPERATURE_BREACH(temperature) or HIGH_TEMPERATURE_BREACH(temperature) 
-            or LOW_TEMPERATURE_WARNING(temperature) 
-            or HIGH_TEMPERATURE_WARNING(temperature) 
-            or NORMAL_TEMPERATURE(temperature))
+    return (NORMAL_TEMPERATURE(temperature) or 
+            low_temperature_is_ok(temperature) or 
+            high_temperature_is_ok(temperature))
