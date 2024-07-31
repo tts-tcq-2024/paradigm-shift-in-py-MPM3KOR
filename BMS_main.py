@@ -1,8 +1,8 @@
 #Battery Management System
 
-from paradigm_temperature import temperature_is_ok
-from paradigm_SOC import soc_is_ok
-from paradigm_charge_rate import charge_rate_is_ok
+from Temperature_check import temperature_is_ok
+from SOC_check import soc_is_ok
+from Charge_rate_check import charge_rate_is_ok
 
 
 def battery_is_ok(temperature, soc, charge_rate):
