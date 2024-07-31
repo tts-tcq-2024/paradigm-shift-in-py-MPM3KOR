@@ -45,8 +45,14 @@ def HIGH_SOC_WARNING_message():
     print ("HIGH SOC WARNING")
 
 
+def low_soc_is_ok(soc):
+    return(LOW_SOC_WARNING(soc) or
+    LOW_SOC_BREACH(soc))
+
+def high_soc_is_ok(soc):
+    return(HIGH_SOC_WARNING(soc) or 
+           HIGH_SOC_BREACH(soc))
+
 def soc_is_ok(soc):
-    return (NORMAL_SOC(soc) or LOW_SOC_WARNING(soc) 
-            or HIGH_SOC_WARNING(soc) or LOW_SOC_BREACH(soc) 
-            or HIGH_SOC_BREACH(soc))
+    return (NORMAL_SOC(soc) or low_soc_is_ok(soc) or high_soc_is_ok(soc) )
     
